@@ -9,7 +9,6 @@ const app= express();
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 const sgMail = require('@sendgrid/mail');
-const alert = require('alert');
 const adminrouter=require("../server/adminRoutes.js");
 
 
@@ -35,11 +34,14 @@ mongoose.connect("mongodb+srv://amrsalem2468:CubeCube@cluster0.imuu7kk.mongodb.n
     ,
 }  ,console.log("database is connected")
 );
+const PORT = process.env.PORT || 3030;
 
+// your code
 
-app.listen(servernum,() =>{
-    console.log("server "+servernum+" is running");
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
 });
+
 
 
 
