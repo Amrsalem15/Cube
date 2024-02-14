@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>  
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>CUBE</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/Picture1.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+ 
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <%- include('partials/header.ejs') %>
+
+  <!-- End Header -->
+
+  
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/breadcrumbs-bg.jpg');">
+      <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+        <h2>Project Details</h2>
+        <ol>
+          <li><a href="index">Home</a></li>
+          <li>Project Details</li>
+        </ol>
+
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Projet Details Section ======= -->
+    <section id="project-details" class="project-details">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="position-relative h-100">
+          <div class="slides portfolio-details-slider swiper">
+            <div class="swiper-wrapper align-items-center">
+              <% if (project.SliderImages) { %>
+                <% project.SliderImages.forEach(Image => { %>
+                  <div class="swiper-slide" style="background-image: url('projects_images/<%= Image %>'); background-repeat: no-repeat;background-size: 100% 500px;">
+                    <div class="d-flex gap-2 justify-content-end">
+                      <button onclick="deleteImage('<%= project._id %>','<%= Image %>')" id="deleteButton" type="button" class="btn btn-primary ">
+                        Delete <i class="bi bi-trash"></i>
+                      </button>
+
+                    </div>
+                      
+                 
+                  </div>
+                <% }) %>
+              <% } %>
+              
+      
+              
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+
+        </div>
+
+        <div class="row justify-content-between gy-4 mt-4">
+          <% if (project.SliderImages.length < 6) { %>
+            <form id="addImageForm" class="d-flex justify-content-center" action="/adminAddImageProject" method="POST" enctype="multipart/form-data" onsubmit="addImage('<%= project._id %>')">
+              <div class="d-flex flex-row gap-3">
+                <input style="min-width: 200px; width: 300px;" type="file" name="projectImage" id="projectImage" class="form-control">
+                <button type="submit" class="btn btn-primary">Add Photo</button>
+              </div>
+            </form>
+          <% } else  { %>
+            <div class="d-flex justify-content-center">
+              <h3>You can't add more than 6 images</h3>
+            </div>
+          <% } %>
+          
+           
+        
+          
+           
+          
+
+          <div class="col-lg-8">
+            <div class="portfolio-description">
+              <h2>Project Title : <%=project.Title%></h2>
+              <input style="display:none;" type="text" id="EditedTitle" value="<%=project.Title%>">
+              <div class="d-flex gap-1 mt-1 ">
+              <button id="TitleButton" onclick="showTitle()" class="btn btn-primary">Edit Title</button>
+              <button onclick="EditTitle('<%=project.Title%>','<%=project._id%>')" id="ConfirmTitle" style="display:none;" class="btn btn-secondary">Confirm</button>
+            </div>
+              <p class="text-wrap text-break">
+               <%=project.Description%>           
+              </p>
+              <textarea style="display: none;"  id="Editdescription" class="form-control border border-3"rows="12"><%=project.Description%></textarea>
+              <div class="d-flex gap-1 mt-1 ">
+              <button id="descriptionButton" onclick="showDescription()" class="btn btn-primary">Edit Description</button>
+              <button onclick="EditDescription('<%=project._id%>')" style="display: none;" id="descriptionConfirm" class="btn btn-secondary">Confirm</button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="portfolio-info">
+              <h3>Project information</h3>
+              <ul>
+                <li><strong>Category</strong> <span><%=project.Category.toUpperCase()%></span> 
+                  <select style="display: none;" id="EditedCategory" class=" h-75 border border-secondary-subtle border rounded-3 w-auto ">
+                    <option value="Select a Category">Select a Category</option>
+                   <% if (categories.length>0) { %>
+                    <% categories.forEach(category => { %>
+                     <option value= "<%= category.Title %>"> <%= category.Title %></option>
+                    <% }) %>
+                   <% } %>
+                  </select>  
+                   <button id="CategoryButton" onclick="showCategory()" class="btn btn-primary mt-1">Change Category</button>
+                  <button onclick="EditCategory('<%= project._id %>')" id="ConfirmCategory" style="display: none;" class="btn btn-secondary mt-1"> Confirm </button>
+                </li> 
+                 
+                <li><strong>Client</strong> <span><%=project.Client%></span> 
+                  <input style="display: none;" type="text" id="EditedClient" value="<%=project.Client%>">
+                   <button id="ClientButton" onclick="showClient()" class="btn btn-primary mt-1">Change Client</button>
+                   <button onclick="EditClient('<%= project._id %>')" id="ConfirmClient" style="display: none;" class="btn btn-secondary mt-1"> Confirm </button>
+                  </li>
+                <li><strong>Project date</strong>
+                   <span><%=project.Date%></span>
+                   <input style="display: none;" id="EditedDate" type="date">
+                   <button id="DateButton" onclick="showDate()" class="btn btn-primary mt-1">Change Date</button>
+                   <button onclick="EditDate('<%= project._id %>')" id="ConfirmDate" style="display: none;" class="btn btn-secondary mt-1"> Confirm </button>
+                </li>
+                
+
+                
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Projet Details Section -->
+
+
+
+
+  </main><!-- End #main -->
+
+   <!-- ======= Footer ======= -->
+   <%- include('partials/footer.ejs') %>
+  <!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    
+    async function addImage(id) {
+      event.preventDefault();
+      const ID = id;
+      const formData = new FormData(document.getElementById('addImageForm'));
+      formData.append('ID', ID);
+    
+      console.log(formData);
+      console.log(ID);
+    if(document.getElementById("projectImage").value==""){
+      document.getElementById("projectImage").className="border border-danger border-3 rounded-3";}
+      else{
+        document.getElementById("projectImage").className="form-control";
+      
+      try {
+        const response = await axios.post('/adminAddImageProject', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          },
+        });
+        if (response.data.success) {
+          window.location.reload();
+        }
+    
+        // Handle the response as needed
+      } catch (error) {
+        // Handle any errors that may occur during the request
+        console.error(error);
+      }
+    }
+    }
+    
+    
+  
+  
+    // Click event handler for the "Delete" button in the modal
+     async function deleteImage(id, imageNameToDelete) {
+      const imageName = imageNameToDelete;
+      const ID=id;
+      console.log(id);
+      console.log(imageName);
+      const response = await axios.post('/adminDeleteImageProject', {
+        imageNameToDelete: imageName,
+        ID:ID
+      });
+
+      if (response.data.success) {
+        window.location.reload();
+      }
+  
+
+    }
+ 
+  function showTitle(){
+    if(document.getElementById("TitleButton").innerHTML == "Edit Title"){
+      document.getElementById("TitleButton").innerHTML = "Cancel";
+      document.getElementById("EditedTitle").style.display = "block";
+       document.getElementById("ConfirmTitle").style.display = "block";
+    }
+    else{
+      document.getElementById("TitleButton").innerHTML = "Edit Title";
+      document.getElementById("EditedTitle").style.display = "none";
+      document.getElementById("ConfirmTitle").style.display = "none";
+      document.getElementById("EditedTitle").value= "<%=project.Title%>";
+      document.getElementById("EditedTitle").className=" border border-secondary-subtle border-2";
+
+    }
+
+    
+    
+  }
+  function showDescription(){
+    if(document.getElementById("descriptionButton").innerHTML == "Edit Description"){
+      document.getElementById("descriptionButton").innerHTML = "Cancel";
+      document.getElementById("Editdescription").style.display = "block";
+      document.getElementById("descriptionConfirm").style.display = "block";
+    }
+    else{
+      document.getElementById("descriptionButton").innerHTML = "Edit Description";
+      document.getElementById("Editdescription").style.display = "none";
+      document.getElementById("descriptionConfirm").style.display = "none";
+      document.getElementById("Editdescription").value= "<%=project.Description%>";
+      document.getElementById("Editdescription").classList.add("border","border-secondary-subtle", "border-3");
+
+
+    }
+
+  
+  }
+  function showCategory(){
+    if(document.getElementById("CategoryButton").innerHTML == "Change Category"){
+      document.getElementById("CategoryButton").innerHTML = "Cancel";
+      document.getElementById("EditedCategory").style.display = "block";
+      document.getElementById("ConfirmCategory").style.display = "block";
+    }
+    else{
+      document.getElementById("CategoryButton").innerHTML = "Change Category";
+      document.getElementById("EditedCategory").style.display = "none";
+      document.getElementById("ConfirmCategory").style.display = "none";
+    }
+  }
+  function showClient(){
+    if(document.getElementById("ClientButton").innerHTML == "Change Client"){
+      document.getElementById("ClientButton").innerHTML = "Cancel";
+      document.getElementById("EditedClient").style.display = "block";
+      document.getElementById("ConfirmClient").style.display = "block";
+    }
+    else{
+      document.getElementById("ClientButton").innerHTML = "Change Client";
+      document.getElementById("EditedClient").style.display = "none";
+      document.getElementById("ConfirmClient").style.display = "none";
+      document.getElementById("EditedClient").value= "<%=project.Client%>";
+      document.getElementById("EditedClient").className=" border border-secondary-subtle border-2";
+
+
+    }
+
+  }
+  function showDate(){
+    if(document.getElementById("DateButton").innerHTML == "Change Date"){
+      document.getElementById("DateButton").innerHTML = "Cancel";
+      document.getElementById("EditedDate").style.display = "block";
+      document.getElementById("ConfirmDate").style.display = "block";
+    }
+    else{
+      document.getElementById("DateButton").innerHTML = "Change Date";
+      document.getElementById("EditedDate").style.display = "none";
+      document.getElementById("ConfirmDate").style.display = "none";
+    
+      document.getElementById("EditedDate").className="";
+    
+
+    }
+  }
+ async function EditTitle(oldTitle,id){
+  console.log(oldTitle);
+  console.log(id)
+const OldTitle=oldTitle;
+const ID=id;
+const newTitle=document.getElementById("EditedTitle").value;
+if(newTitle==""){
+  document.getElementById("EditedTitle").className="border border-danger border-3";
+}else{
+  const response = await axios.post('/adminEditTitleProject', {
+   oldTitle:OldTitle,
+   ID:ID,
+   newTitle:newTitle
+  });
+  if (response.data.success) {
+    
+    window.location.reload();
+  } 
+}
+
+ }
+ async function EditDescription(id){
+  
+console.log(id)
+const ID=id;
+const newDescription=document.getElementById("Editdescription").value;
+console.log(newDescription);
+console.log(ID);
+if(newDescription==""){
+  document.getElementById("Editdescription").classList.add("border", "border-danger", "border-3");
+  document.getElementById("Editdescription").rows = 12;
+}else{
+  const response = await axios.post('/adminEditDescriptionProject', {
+    ID:ID,
+    newDescription:newDescription
+   });
+   if (response.data.success) {
+     window.location.reload();
+   }
+}
+  
+}
+ async function EditCategory(id){
+ console.log(document.getElementById("EditedCategory").value);
+console.log(id) 
+const ID=id;
+const newCategory=document.getElementById("EditedCategory").value;
+if(newCategory=="Select a Category"){
+  document.getElementById("EditedCategory").className="border border-danger border-3 rounded-3";
+}else{
+  document.getElementById("EditedCategory").className="h-75 border border-secondary-subtle border rounded-3 w-auto";
+  const response = await axios.post('/adminEditCategoryProject', {
+   ID:ID,
+   newCategory:newCategory
+  });
+  if (response.data.success) {
+    window.location.reload();
+  }
+
+
+}
+ }
+ async function EditClient(id){
+  const ID=id;
+  const newClient=document.getElementById("EditedClient").value;
+  console.log(newClient);
+  console.log(ID);
+  if(newClient=="" || newClient==" "){
+    document.getElementById("EditedClient").className="border border-danger border-3";
+  }
+  else{
+    const response = await axios.post('/adminEditClientProject', {
+     ID:ID,
+     newClient:newClient
+    });
+    if (response.data.success) {
+      window.location.reload();
+    }
+  }
+ }
+ async function EditDate(id){
+  const ID=id;
+  const newDate=document.getElementById("EditedDate").value;
+  console.log(newDate);
+  console.log(ID);
+  if(newDate==""){
+    document.getElementById("EditedDate").className="border border-danger border-3";
+  }
+  else{
+    const response = await axios.post('/adminEditDateProject', {
+     ID:ID,
+     newDate:newDate
+    });
+    if (response.data.success) {
+      window.location.reload();
+    }
+  }
+ }
+</script>
+  
+
+</body>
+
+</html>

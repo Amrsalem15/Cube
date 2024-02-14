@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  .grey-bg {  
+    background-color: #F5F7FA;
+}
+/* Define hover styles for the card */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  cursor: pointer;
+}
+</style>
+<head>  
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>CUBE</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/Picture1.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+  <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+  <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+  <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+ 
+</head>
+
+<body>
+
+   <!-- ======= Header ======= -->
+   <%- include('partials/header.ejs') %>
+   <!-- End Header -->
+  
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/breadcrumbs-bg.jpg');">
+      <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+        <h2>Admin</h2>
+        <ol>
+          <li><a href="index">Home</a></li>
+          <li>Admin</li>
+        </ol>
+
+      </div>
+    </div><!-- End Breadcrumbs -->
+    <section class="d-flex grey-bg">
+      <div class= "container-fluid">
+  <section style="margin-top: -50px;margin-bottom:-60px">
+      <h1  style="margin-top:-50px;"class="fs-1 d-flex justify-content-center">Welcome : <%=username%></h1>
+
+  
+    <div class="row">
+      <div class="col-xl-3 col-sm-6 col-12">
+        <a href="/adminProjects">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div style="position: relative;top:15px" class="media-body text-left mb-1">
+                  <h3 >Add Projects</h3>
+                 </div>
+                <div class="align-self-center">
+                  <i class="icon-rocket danger font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <a href="/adminCateogry">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div style="position: relative;top:15px" class="media-body text-left mb-1">
+                  <h3 >Edit Categories</h3>
+                 </div>
+                <div class="align-self-center">
+                  <i class="icon-book-open primary font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      </div>
+  
+      <div class="col-xl-3 col-sm-6 col-12">
+        <a href="/adminEditProject">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div style="position: relative;top:15px" class="media-body text-left mb-1">
+                  <h3 >Edit Projects</h3>
+                 </div>
+                <div class="align-self-center">
+                  <i class="icon-pencil primary font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      </div>
+
+
+      <div class="col-xl-3 col-sm-6 col-12">
+        <a href="/adminPartners">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div style="position: relative;top:15px" class="media-body text-left mb-1">
+                  <h3 >Edit Partners</h3>
+                 </div>
+                <div class="align-self-center mb-n1">
+                  <i class="bi-people primary font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      </div>
+    </div>
+
+    <div  class="row">
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div id="admin" class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div style="position: relative;top:15px" class="media-body text-left mb-1">
+                  <h3 >Add Admin</h3>
+                 </div>
+                <div class="align-self-center">
+                  <i class="icon-user success font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div id="edit_admins" class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div style="position: relative;top:15px" class="media-body text-left mb-1">
+                  <h3 >Edit Admins</h3>
+                 </div>
+                <div class="align-self-center">
+                  <i class="icon-user success font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div   class="col-xl-3 col-sm-6 col-12">
+        <div id="changePassword" class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div style="position: relative;top:15px" class="media-body text-left mb-1">
+                  <h3 >Change Password</h3>
+                 </div>
+                <div class="align-self-center">
+                  <i class="icon-pencil primary font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-xl-3 col-sm-6 col-12">
+        <form action="/logout" method="post">
+        <div  id="logout" class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div style="position: relative;top:15px" class="media-body text-left mb-1">
+                  <h3 >Logout</h3>
+                 </div>
+                <div class="align-self-center">
+                  <i class="bi-box-arrow-right primary font-large-1"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      </div>
+
+     
+  
+      
+     
+    </div>
+    <div id="changePass" class=" d-none row justify-content-center">
+      <div class="col-xl-3 col-sm-6 col-12">
+        <label for="oldpassword"> Old Password</label>
+        <input id="oldpassword" type="password" class="form-control" placeholder="password">
+        <div id="addAdminOldPasswordWarning" class="alert alert-danger alert-dismissible fade show"role="alert" style="margin-top: 10px;display:none">
+          <h4 style="position: relative;left: 10px;"> Password must be from 8 to 12 characters  </h4>
+          <button onclick="hide('addAdminOldPasswordWarning')" type="button" class="btn-close" aria-label="Close"></button>
+         </div>
+        <label for="newpassword"> New Password</label>
+        <input id="newpassword" type="password" class="form-control" placeholder="password">
+
+        <div id="addAdminNewPasswordWarning" class="alert alert-danger alert-dismissible fade show"role="alert" style="margin-top: 10px;display:none">
+          <h4 style="position: relative;left: 10px;"> Password must be from 8 to 12 characters  </h4>
+          <button onclick="hide('addAdminNewPasswordWarning')" type="button" class="btn-close" aria-label="Close"></button>
+         </div>
+        <button onclick="changePassword()" class="mt-1 btn btn-primary">Change Password</button>
+
+    </div>
+    
+    </div>
+    <div id="edit_admins_form" class=" d-none row justify-content-center">
+      <div class="row row-cols-1 row-cols-md-5 g-4">
+        <% users.forEach(user => { %>
+        <div class="col">
+          <div class="card">
+            <% if(user.Owner!=true){ %>
+            <div class="d-flex gap-2 justify-content-end">
+              <button onclick="deleteUser('<%=user._id%>')" class="h-50"><i class="bi bi-trash primary "></i></button> 
+            </div>
+            <% } %>
+            <i class="icon-user success font-large-5 mt-2 row justify-content-center"></i>
+
+            <div class="card-body row justify-content-center">
+              <h5 class="card-title row justify-content-center"><%=user.username%></h5>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+        
+        
+       
+        
+      </div>
+
+    </div>
+  
+    
+
+    <div id="addadminForm" action="/adminAddUser" method="POST" class=" d-none row justify-content-center">
+      <div class="col-xl-3 col-sm-6 col-12">
+        <label for="adminusername"> Username</label>
+        <input id="adminusername" type="text" class="form-control" placeholder="Username" name="username">
+        <div id="addadminUserWarning" class="alert alert-danger alert-dismissible fade show"role="alert" style="margin-top: 10px;display:none">
+          <h4 style="position: relative;left: 10px;">Username must be from 8 to 12 characters </h4>
+          <button onclick="hide('addadminUserWarning')" type="button" class="btn-close" aria-label="Close"></button>
+         </div>
+
+        <label for="password">  Password</label>
+        <input id="password" type="password" class="form-control" placeholder="Password" name="password">
+
+        <div id="addAdminPassWarning" class="alert alert-danger alert-dismissible fade show"role="alert" style="margin-top: 10px;display:none">
+          <h4 style="position: relative;left: 10px;"> Password must be from 8 to 12 characters  </h4>
+          <button onclick="hide('addAdminPassWarning')" type="button" class="btn-close" aria-label="Close"></button>
+         </div>
+        <button type="submit" onclick="adduser()" class="mt-1 btn btn-primary">Register</button>
+
+    </div>
+  </div>
+   
+    
+
+  </section>
+  
+ 
+</div>
+
+
+    </section>
+   
+
+  </main><!-- End #main -->
+
+   <!-- ======= Footer ======= -->
+   <%- include('partials/footer.ejs') %>
+
+  <!-- End Footer -->
+
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    async function deleteUser(id){
+      console.log(id);
+  
+     var result = confirm("Are you sure you want to delete this user?");
+      if (result) {
+        try {
+          const response = await axios.post('/adminDeleteUser', {
+            id:id,
+            }, {
+          });
+          if (response.data.success) {
+            console.log('Successfully deleted a user');
+            window.location.reload();
+          } else {
+            console.error('Failed to delete a user');
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    }
+    function hide(type){
+      console.log(type);
+      document.getElementById(type).style.display="none";
+    }
+   
+    const logoutButton = document.getElementById("logout");
+logoutButton.addEventListener("click", function(event) {
+  event.preventDefault(); // Prevent the default action of the button
+  const form = document.querySelector("form[action='/logout']");
+  form.submit(); // Submit the form
+});
+
+    // Get a reference to the div element by its id
+    const changePasswordDiv = document.getElementById("changePassword");
+    var flagPass=false
+  
+    // Add a click event listener
+    changePasswordDiv.addEventListener("click", function() {
+      // Your custom code to execute when the div is clicked
+      if(flagPass==false){
+        document.getElementById("changePass").classList.remove("d-none");
+        flagPass=true
+
+      }
+    
+     else{
+      document.getElementById("changePass").classList=" d-none row justify-content-center";
+      flagPass=false
+
+     }
+      // You can replace the alert with your desired functionality.
+    });
+  
+    const adminDiv = document.getElementById("admin");
+    var flagAdmin=false
+    adminDiv.addEventListener("click", function() {
+      // Your custom code to execute when the div is clicked
+      if(flagAdmin==false){
+        document.getElementById("addadminForm").classList.remove("d-none");
+        flagAdmin=true
+
+      }
+    
+     else{
+      document.getElementById("addadminForm").classList=" d-none row justify-content-center";
+      flagAdmin=false
+
+     }
+      // You can replace the alert with your desired functionality.
+    });
+    const EditadminDiv = document.getElementById("edit_admins");
+    var flagEditAdmin=false
+    EditadminDiv.addEventListener("click", function() {
+      if(flagEditAdmin==false){
+        document.getElementById("edit_admins_form").classList.remove("d-none");
+        flagEditAdmin=true
+
+      }
+    
+     else{
+      document.getElementById("edit_admins_form").classList=" d-none row justify-content-center";
+      flagEditAdmin=false
+
+     }
+    });
+    async function adduser() {
+      var username = document.getElementsByName("username")[0].value;
+      var password = document.getElementsByName("password")[0].value;
+
+      console.log(username);
+      console.log(password);
+      if((username.length<8 || username.length>12)&&(password.length<8 || password.length>12)){
+        document.getElementById("addadminUserWarning").style.display="block";
+        document.getElementById("addAdminPassWarning").style.display="block";
+        
+      }
+     else  if(password.length<8 || password.length>12){
+        document.getElementById("addAdminPassWarning").style.display="block";
+        document.getElementById("addadminUserWarning").style.display="none";
+      }
+      else if(username.length<8 || username.length>12){
+        document.getElementById("addadminUserWarning").style.display="block";
+        document.getElementById("addAdminPassWarning").style.display="none";
+      }
+      else{
+        try {
+        const response = await axios.post('/adminAddUser', {
+          username:username,
+          password:password,
+          }, {
+        });
+        if (response.data.success) {
+          console.log('Successfully add a user');
+          window.location.reload();
+        }else if(response.data.user='exists'){
+          console.log('Username already exists from here');
+          document.getElementById("addadminUserWarning").style.display="block";
+          document.getElementById("addadminUserWarning").textContent="Username already exists";
+          document.getElementById("addAdminPassWarning").style.display="none";
+        }
+         else {
+          console.error('Failed to add a user');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+
+      }
+      
+    }
+  async function changePassword(){
+    var oldpassword = document.getElementById("oldpassword").value;
+    var newpassword = document.getElementById("newpassword").value;
+
+    console.log(oldpassword);
+    console.log(newpassword);
+    if((oldpassword.length<8 || oldpassword.length>12)&&(newpassword.length<8 || newpassword.length>12)){
+      document.getElementById("addAdminOldPasswordWarning").style.display="block";
+      document.getElementById("addAdminNewPasswordWarning").style.display="block";
+      
+    }
+
+    else if((oldpassword.length<8 || oldpassword.length>12)){
+      document.getElementById("addAdminOldPasswordWarning").style.display="block";
+      document.getElementById("addAdminNewPasswordWarning").style.display="none";
+
+      
+    }
+    else if((newpassword.length<8 || newpassword.length>12)){
+      document.getElementById("addAdminNewPasswordWarning").style.display="block";
+      document.getElementById("addAdminOldPasswordWarning").style.display="none";
+    }else{
+      document.getElementById("addAdminNewPasswordWarning").style.display="none";
+      document.getElementById("addAdminOldPasswordWarning").style.display="none";
+      try {
+        const response = await axios.post('/adminChangePassword', {
+          oldpassword:oldpassword,
+          newpassword:newpassword,
+          }, {
+        });
+        if (response.data.success) {
+          console.log('Successfully changed password');
+          window.location.reload();
+        }
+        else if(response.data.password==false){
+          console.log('Old password is wrong');
+          document.getElementById("addAdminOldPasswordWarning").style.display="block";
+          document.getElementById("addAdminOldPasswordWarning").textContent="Old password is wrong";
+          document.getElementById("addAdminNewPasswordWarning").style.display="none";
+        }
+        
+        else {
+          console.error('Failed to change password');
+        }
+        
+        
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  
+  }
+  </script>
+  
+</body>
+
+</html>

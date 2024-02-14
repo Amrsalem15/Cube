@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>  
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>CUBE</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/Picture1.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+ 
+</head>
+
+<body>
+
+   <!-- ======= Header ======= -->
+   <%- include('partials/header.ejs') %>
+   <!-- End Header -->
+  
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/breadcrumbs-bg.jpg');">
+      <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+        <h2>Admin</h2>
+        <ol>
+          <li><a href="index">Home</a></li>
+          <li>Admin</li>
+        </ol>
+
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <section class="sample-page">
+      <div class="container section-bg" style=" margin: auto; text-align: center;
+      justify-content: center;">
+        <form  id="AddimageForm" action="/AdminAddPartner" method="POST" enctype="multipart/form-data">
+          <div  class="container">
+          <h2>Add Partner</h2>
+          <input type="file" placeholder="image" accept="image/*" name="image" id="partnerimage" >
+          <input placeholder="enter partner name" name="partnerName" id="partnerName">
+          <button type="submit">add partner</button>
+          </div>
+        </form>
+        <section id="services" class="services section-bg">
+          <div class="container" data-aos="fade-up">
+            <div class="section-header">
+              <h2>OUR PARTNERS</h2>
+            </div>
+            <div style="margin-top: -60px;" class="row gy-2 ">
+              <% if (partners.length>0) { %>
+                <% partners.forEach(partner => { %>
+                  <div class="col-lg-4 col-md-6"data-aos="fade-up" data-aos-delay="200" id="button">
+                    <div class="service-item position-relative ">
+                      <div class="icon">
+                        <img src=<%= "partner_images/"+partner.ImageName%> style="height: 100%;width:100%; border-radius: 25px;">
+                      </div>
+                      <h3><%= partner.Title %> </h3>
+                    </div>
+                    <form action="DeleteAdminPartner" method="POST" id="DeleteAdminPartner">
+                      <button onclick="" style="position: relative;top: -20px;left: -10px;"  name="DeleteAdminPartnerButton" value="<%- partner.Title %>" >Delete</button>
+                    </form>
+
+                  </div>
+                <% }) %>
+              <% } %>
+              <!-- End Service Item -->
+            </div>
+    
+          </div>
+        </section><!-- End partners Section -->
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+   <!-- ======= Footer ======= -->
+   <%- include('partials/footer.ejs') %>
+  <!-- End Footer -->
+
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <!-- <script>
+    document.getElementById('AddimageForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+  
+      const partnerName = document.getElementById('partnerName').value;
+      const partnerImageInput = document.getElementById('partnerimage');
+      const partnerImageFile = partnerImageInput.files[0];
+      if(partnerImageFile==null){
+        console.log("no")
+      }
+      // Create a FormData object to send the file
+      const formData = new FormData();
+      formData.append('partnerName', partnerName);
+      formData.append('image', partnerImageFile);
+  
+      // Define the URL where you want to send the POST request
+      const apiUrl = '/AdminAddPartner'; // Replace with your API endpoint
+  
+      // Make the Axios POST request with FormData
+      try {
+        const response = await axios.post(apiUrl, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data', // Important for file uploads
+          },
+        });
+Response.redirect('/admin')
+        // Handle the response as needed
+      } catch (error) {
+        console.error('Error:', error);
+        // Handle errors
+      }
+    });
+  </script>
+   -->
+  
+</body>
+
+</html>

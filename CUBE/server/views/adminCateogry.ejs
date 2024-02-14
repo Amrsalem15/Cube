@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>  
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>CUBE</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/Picture1.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+ 
+</head>
+
+<body>
+
+   <!-- ======= Header ======= -->
+   <%- include('partials/header.ejs') %>
+   <!-- End Header -->
+  
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/breadcrumbs-bg.jpg');">
+      <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+        <h2>Admin Categories</h2>
+        <ol>
+          <li><a href="index">Home</a></li>
+          <li>Admin Categories</li>
+        </ol>
+
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <section class="sample-page">
+      <div class="container">
+
+        <div class="container section-bg" style=" margin: auto; text-align: center;justify-content: center;">
+        <form  id="AddimageForm" action="/adminAddCategory" method="POST" enctype="multipart/form-data" onsubmit="adminAddCategory()">
+          <div  class="container">
+          <h2>Add Category</h2>
+          <input type="file" placeholder="image" accept="image/*" name="image" id="categoryimage"  >
+          <input placeholder="enter category name" name="categoryName" id="categoryName">
+          <button type="submit" class="btn btn-secondary">Add Category</button>
+
+          <div id="AddCategory" class="alert alert-danger alert-dismissible fade show"role="alert" style="margin-top: 10px;display:none">
+            <h4 style="position: relative;left: 10px;"> Please add a Image or a Name </h4>
+            <button onclick="hide('Add Category')" type="button" class="btn-close" aria-label="Close"></button>
+           </div>
+          </div>
+        </form>
+        <form  id="EditimageForm" action="/adminEditCategory" method="POST" enctype="multipart/form-data" onsubmit="ChangeImage()">
+          <div class="container">
+          <h2>Edit Category image</h2>
+          <input type="file" placeholder="image" accept="image/*" name="image" id="categoryimage">
+          <select id="categorySelect" name="categorySelect">
+            <option value="Select a Category">Select a Category</option>
+           <% if (categories.length>0) { %>
+            <% categories.forEach(category => { %>
+             <option value= "<%= category.Title %>"> <%= category.Title %></option>
+            <% }) %>
+           <% } %>
+            <!-- Add more options as needed -->
+          </select>
+          <button type="submit" class="btn btn-secondary">Change Image</button>
+          
+          <div id="Editimage" class="alert alert-danger alert-dismissible fade show"role="alert" style="margin-top: 10px;display:none">
+            <h4 style="position: relative;left: 10px;"> Please add a Image or choose a category </h4>
+            <button onclick="hide('Editimage')" type="button" class="btn-close" aria-label="Close"></button>
+           </div>
+
+          </div>
+        </form>
+        <form id="EditNameForm" action="/adminEditNameCategory" method="POST" onsubmit="ChangeName()">
+          <div class="container">
+          <h2>Change Category Name</h2>
+          <select id="categorySelectOldName" name="categorySelectOldName">
+            <option value="Select a Category">Select a Category</option>
+           <% if (categories.length>0) { %>
+            <% categories.forEach(category => { %>
+             <option value= "<%= category.Title %>"> <%= category.Title %></option>
+            <% }) %>
+           <% } %>
+          </select>
+          <input style="position: relative;left:40px;width: 300px;" placeholder="enter new name" name="categoryNewName" id="categoryNewName">
+          <button style="margin-left: 60px;" type="submit" class="btn btn-secondary">Change Name</button>
+          <div id="EditName" class="alert alert-danger alert-dismissible fade show"role="alert" style="margin-top: 10px;display:none">
+            <h4 style="position: relative;left: 10px;"> Please add a Name or choose a category </h4>
+            <button onclick="hide('EditName')" type="button" class="btn-close" aria-label="Close"></button>
+           </div>
+
+          </div>
+        </form>
+        <form id="deleteForm" action="/admindeleteCategory" method="POST" onsubmit="deleteCategoryChoose()">
+          <div class="container">
+          <h2>Delete Category</h2>
+          <select id="deleteCategorySelect" name="deleteCategorySelect">
+            <option value="Select a Category">Select a Category</option>
+           <% if (categories.length>0) { %>
+            <% categories.forEach(category => { %>
+             <option value= "<%= category.Title %>"> <%= category.Title %></option>
+            <% }) %>
+           <% } %>
+          </select>
+          <button style="margin-left: 60px;" type="submit" class="btn btn-secondary">Delete Category</button>
+          <div id="deleteCategoryChoose" class="alert alert-danger alert-dismissible fade show"role="alert" style="margin-top: 10px;display:none">
+            <h4 style="position: relative;left: 10px;"> Please choose a category </h4>
+            <button onclick="hide('deleteCategoryChoose')" type="button" class="btn-close" aria-label="Close"></button>
+           </div>
+           <div id="deleteCategoryFound" class="alert alert-danger alert-dismissible fade show"role="alert" style="margin-top: 10px;display:none">
+            <h4  style="position: relative;left: 10px;"> There is projects in this category </h4>
+            <button onclick="hide('deleteCategoryFound')" type="button" class="btn-close" aria-label="Close"></button>
+           </div>
+
+          </div>
+        </form>
+
+
+        <section id="projects" class="projects">
+          <div class="container"  data-aos="fade-up">
+      
+            <div class="section-header" style="margin-top: -60px;margin-bottom: -50px;">
+              <h2>Our Projects Categories</h2>
+            </div>      
+             
+            <% if (categories.length>0) { %>
+       
+              <div class="swiper-container mySwiper" style="margin-top: -20px;">
+               
+                  <div class="swiper-wrapper">
+                    
+                        <% categories.forEach(category => { %>
+                        
+                          <button id="button" value="<%= category.Title %>" type="submit" class="swiper-slide" data-swiper-autoplay="2000" name="category" value="<%= category.Title %>">
+                          <img src=<%= "project_categotries_images/"+category.ImageName%> />
+                          <h3 name="amr" id="name" value= "<%= category.Title %>">
+                          <%= category.Title %>
+                         </h3>
+                        </button>
+               
+                      <% }) %>
+                   
+                  
+                      </div>
+                  
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
+           
+                <% } %>
+              <!-- End Projects Container -->
+      
+          </div>
+          </div>
+        </section>
+      </div>
+
+    </section>
+
+  </main><!-- End #main -->
+
+   <!-- ======= Footer ======= -->
+   <%- include('partials/footer.ejs') %>
+
+  <!-- End Footer -->
+
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+    async function ChangeImage() {
+      event.preventDefault(); // Prevent the default form submission behavior
+      
+      // Get the selected category value
+      const selectedCategory = document.getElementById('categorySelect').value;
+      const formData = new FormData(document.getElementById('EditimageForm'));
+      console.log(formData.get('image').name);
+      console.log("Selected category value: " + selectedCategory);
+      if(formData.get('image').name=="" || selectedCategory=="Select a Category"){
+        document.getElementById("Editimage").style.display="block";
+      }
+      else{
+      try {
+        const response = await axios.post('/adminEditCategory', formData,selectedCategory, {
+
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        if (response.data.success) {
+          console.log('Successfully edited a category');
+          window.location.reload();
+        } else {
+          console.error('Failed to edit a category');
+        }
+      } catch (error) {
+        console.error(error);
+      }}
+    }
+   
+    async function ChangeName() {
+
+      event.preventDefault(); // Prevent the default form submission behavior
+      
+      // Get the selected category value
+      const categorySelectOldName = document.getElementById('categorySelectOldName').value;
+      const categoryNewName = document.getElementById('categoryNewName').value;
+      // Print the selected category value to the console or display it wherever you need
+      console.log("Selected category Old value: " + categorySelectOldName);
+      console.log("Selected category New value: " + categoryNewName);
+      if(categorySelectOldName=="Select a Category" || categoryNewName==""){
+        document.getElementById("EditName").style.display="block";
+       
+      }
+      else{
+      try {
+        const response = await axios.post('/adminEditNameCategory', {
+          categorySelectOldName:categorySelectOldName,
+          categoryNewName:categoryNewName,
+          }, {
+        });
+        if (response.data.success) {
+          console.log('Successfully edited a category');
+          window.location.reload();
+        } else {
+          console.error('Failed to edit a category');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    }
+   
+    async function adminAddCategory(){
+      event.preventDefault(); // Prevent the default form submission behavior
+      const formData = new FormData(document.getElementById('AddimageForm'));
+      const categoryName = document.getElementById('categoryName').value;
+      console.log(categoryName);
+      console.log(formData.get('image').name);
+
+      if(formData.get('image').name=="" || categoryName==""){
+        document.getElementById("AddCategory").style.display="block";
+      }
+      else{
+      try {
+        const response = await axios.post('/adminAddCategory', formData,categoryName, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        if (response.data.success) {
+          console.log('Successfully added a category');
+          window.location.reload();
+        } else {
+          console.error('Failed to add a category');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    }
+
+    function hide(type){
+      console.log(type);
+      if(type=="Add Category")
+      document.getElementById("AddCategory").style.display="none";
+      if(type=="Editimage")
+      document.getElementById("Editimage").style.display="none";
+      if(type=="EditName")
+      document.getElementById("EditName").style.display="none";
+      if(type=="deleteCategoryChoose")
+      document.getElementById("deleteCategoryChoose").style.display="none";
+      if(type=="deleteCategoryFound")
+      document.getElementById("deleteCategoryFound").style.display="none";
+    }
+async function deleteCategoryChoose(){
+  event.preventDefault(); // Prevent the default form submission behavior
+  const categorySelect = document.getElementById('deleteCategorySelect').value;
+  console.log(categorySelect);
+  if(categorySelect=="Select a Category"){
+    document.getElementById("deleteCategoryChoose").style.display="block";
+  }
+  else{
+  try {
+    const response = await axios.post('/admindeleteCategory', {
+      categorySelect:categorySelect,
+      }, {
+    });
+    if (response.data.success) {
+      console.log('Successfully deleted a category');
+      window.location.reload();
+    } else {
+      console.error('Failed to delete a category');
+      document.getElementById("deleteCategoryFound").style.display="block";
+      
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+}
+  
+</script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index" style="text-decoration:none;" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/img/CubeLogo-removebg.png" alt="">
+        <!-- <h1>CUBE<span></span></h1> -->
+        <!-- <p style="min-width: 170px;margin-left:-140px">
+          <br/>
+          <br/>
+          <br/>
+        engineering consultant</p> -->
+      </a>
+
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
+        <ul >
+          <li><a href="index" style="text-decoration: none;">Home</a></li>
+          <li><a href="about" style="text-decoration: none;">About us</a></li>
+          <li><a href="services" style="text-decoration: none;">our Services</a></li>
+
+          <li class="dropdown"><a href="#" style="text-decoration: none;"><span>our Projects</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+           
+            <ul>
+              <form action="/projects" method="POST">
+              <% if (categories) { %>
+               
+               <% categories.forEach(category => { %>
+               
+                <li>
+                  <button type="submit" name="category" value="<%= category.Title %>" style="text-decoration: none; background: none; border: none; cursor: pointer;">
+                    <%= category.Title %>
+                  </button>
+                </li>               
+                <% }) %>
+            
+              <% } %>
+             </form>
+            </ul>
+        
+          </li>
+          <li><a href="contact" style="text-decoration: none;">Contact us</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+   <!-- Template Main JS File -->
+   
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   
+  <script>
+   
+  </script>

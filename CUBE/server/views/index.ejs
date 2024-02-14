@@ -1,0 +1,421 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>  
+
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>CUBE</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/Picture1.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+ 
+</head>
+
+<body>
+ 
+
+  <!-- ======= Header ======= -->
+  <%- include('partials/header.ejs') %>
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero">
+
+    <div class="info d-flex align-items-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2 data-aos="fade-down">Welcome to <span><br>CUBE<h3>Engineering Consultant</h3></span></h2>
+            <!-- <p data-aos="fade-up">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
+            <a id="amr" data-aos="fade-up" data-aos-delay="200" href="#alt-services" style="text-decoration:none" class="btn-get-started">Get Started</a>
+            <a id="amr" data-aos="fade-up" data-aos-delay="200" href="#projects" style="text-decoration:none" class="btn-get-started">View Projects</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+
+      <div class="carousel-item active" style="background-image: url(assets/img/hero-carousel/hero-carousel-1.jpg)"></div>
+      <!-- <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-2.jpg)"></div> -->
+      <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-3.jpg)"></div>
+      <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-4.jpg)"></div>
+      <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-5.jpg)"></div>
+
+      <a class="carousel-control-prev" href="#hero-carousel" style="text-decoration:none" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#hero-carousel" style="text-decoration:none" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+
+  </section><!-- End Hero Section -->
+
+  <main id="main">
+
+ <!-- ======= about Section ======= -->
+ <section id="alt-services" class="alt-services section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="row justify-content-around gy-4">
+
+      <div class="col-lg-6 d-flex flex-column justify-content-center">
+        <h3>WHO WE ARE ?</h3>
+        <h5>About Cube</h5>
+        <p>Engineering Consulting is practice of performing engineering as a Consulting Engineer. It assists in
+          development of both public and private companies. This development can be in a variety of ways
+          including Process Management, idea organization, product design, fabrication, branding, and
+          marketing.
+          Engineering consulting firms may require engineers from multiple disciplines including Civil, Structural,
+          Mechanical, Electrical, Environmental, Chemical, Industrial, and Agricultural. This diversity may be
+          necessary to cover wide variety of potential projects that could be presented to a firm. Additionally,
+          Consulting Engineers may assist in marketing of Company or product or project.</p>
+
+        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100" style="position: absolute;
+        top: -30px;">
+          <i class="bi bi-easel flex-shrink-0"></i>
+          <div>
+            <h4><a class="stretched-link">OUR MISSION</a></h4>
+            <p>CUBE engineering consultancy company that delivers the full range of engineering and architectural
+              design services with the aim of moving the global landscape into the future.</p>
+          </div>
+        </div><!-- End Icon Box -->
+
+        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="200" style="position: absolute;
+        top: -50px;">
+          <i class="bi bi-patch-check flex-shrink-0"></i>
+          <div>
+            <h4><a class="stretched-link">OUR VISION</a></h4>
+            <p>CUBE aspires to be in a leading global market position through upholding top ethical standards,
+              promoting first-rate quality, and building worldwide corporate alliances.</p>
+          </div>
+        </div><!-- End Icon Box -->
+      </div>
+      <div class="col-lg-6 img-bg" style="background-image: url(assets/img/Starter.png);" data-aos="zoom-in" data-aos-delay="100"></div>
+
+    </div>
+
+  </div>
+</section><!-- about Section -->
+
+
+   <!-- ======= Our Projects Section ======= -->
+   <section id="projects" class="projects">
+    <div class="container"  data-aos="fade-up">
+
+      <div class="section-header" style="margin-top: -60px;margin-bottom: -50px;">
+        <h2>Our Project Categories</h2>
+      </div>
+      <form action="/projects" method="POST">
+      <% if (categories.length>0) { %>
+       
+        <div class="swiper-container mySwiper" style="margin-top: -20px;">
+         
+            <div class="swiper-wrapper">
+              
+                  <% categories.forEach(category => { %>
+
+                    <button id="button" value="<%= category.Title %>" type="submit" class="swiper-slide" data-swiper-autoplay="2000" name="category" value="<%= category.Title %>">
+                      <img src=<%= "project_categotries_images/"+category.ImageName%> />
+                    <h3 name="amr" id="name" value= "<%= category.Title %>">
+                    <%= category.Title %>
+                   </h3>
+                  </button>
+                </>
+
+                <% }) %>
+             
+            
+                </div>
+            
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+     
+          <% } %>
+
+        </form>
+         
+  </section><!-- End Our Projects Section -->
+
+
+    <!-- ======= partners Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>OUR PARTNERS</h2>
+        </div>
+        <div style="margin-top: -60px;" class="row gy-2">
+          <% if (partners.length>0) { %>
+            <% partners.forEach(partner => { %>
+              <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative">
+                  <div class="icon">
+                    <img src=<%= "partner_images/"+partner.ImageName%> style="height: 100%;width:100%; border-radius: 25px;">
+                  </div>
+                  <h3><%= partner.Title %> </h3>
+                </div>
+              </div>
+            <% }) %>
+          <% } %>
+          <!-- End Service Item -->
+        </div>
+
+      </div>
+    </section><!-- End partners Section -->
+
+  
+    <!-- ======= SERVICES Section ======= -->
+    <section id="constructions" class="constructions ">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>OUR SERVICES</h2>
+        </div>
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="card-item">
+              <div class="row">
+                <div class="col-xl-5">
+                  <div class="card-bg" style="background-image: url(assets/img/STRUCTURAL_DESIGN.jpg);"></div>
+                </div>
+                <div class="col-xl-7 d-flex align-items-center">
+                  <div class="card-body">
+                    <h4 class="card-title">STRUCTURAL DESIGN & REVIEW </h4>
+                    <p>An Independent Structural design review is
+                      intended to provide an increased level of
+                      confidence regarding the predicted performance
+                      and safety of a building or project as documented by
+                      the design in the design criteria, the design and
+                      the design approach and structural design
+                      documentation.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Card Item -->
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="card-item">
+              <div class="row">
+                <div class="col-xl-5">
+                  <div class="card-bg" style="background-image: url(assets/img/DRAWING.jpg);"></div>
+                </div>
+                <div class="col-xl-7 d-flex align-items-center">
+                  <div class="card-body">
+                    <h4 class="card-title">SHOP DRAWING</h4>
+                    <p>A shop drawing is a detailed and precise diagram
+                      of an equipment or building component meant to
+                      be manufactured by a fabrication shop or installed
+                      by a trade specialist. Since shop drawings are
+                      instrumental to the process of prefabrication
+                      design.”</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Card Item -->
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="card-item">
+              <div class="row">
+                <div class="col-xl-5">
+                  <div class="card-bg" style="background-image: url(assets/img/perimts.avif);"></div>
+                </div>
+                <div class="col-xl-7 d-flex align-items-center">
+                  <div class="card-body">
+                    <h4 class="card-title">OBTAINING PERMITS</h4>
+                    <p>Obtaining the Building's Permit going through all stages of approvals including Mogamaa, Gehaz,
+                      Civil Defence .....etc</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Card Item -->
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="card-item">
+              <div class="row">
+                <div class="col-xl-5">
+                  <div class="card-bg" style="background-image: url(assets/img/SUPERVISION.jpeg);"></div>
+                </div>
+                <div class="col-xl-7 d-flex align-items-center">
+                  <div class="card-body">
+                    <h4 class="card-title">CONSTRUCTION SUPERVISION</h4>
+                    <p>Construction Project Supervision (CPS) is the
+                      process of ensuring that the project is built in
+                      accordance with the requirements of the contract
+                      documents, approved plans, specifications,
+                      building codes, building code standards and
+                      applicable local codes and ordinances.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Card Item -->
+
+        </div>
+
+      </div>
+    </section><!-- End SERVICES Section -->
+
+
+ 
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section>
+    <!-- End Testimonials Section -->
+
+    <!-- ======= contact Section ======= -->
+    <section id="get-started" class="get-started section-bg">
+      <div class="container">
+
+        <div class="row justify-content-between gy-4">
+
+          <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
+            <div class="content">
+              <h3>Feel free to contact us.</h3>
+              <h5>we check our mails regluarly and we will contact you within 24 hours </h5>
+            </div>
+          </div>
+
+          <div class="col-lg-5" data-aos="fade">
+            <form  class="php-email-form" onsubmit="sendmail()">
+              <h3>Send us a mail</h3>
+              <h6>feel free to send us any question </h6>
+              <div class="row gy-3">
+
+                <div class="col-md-12">
+                  <input type="text" name="name" class="form-control" placeholder="Name" required>
+                </div>
+
+                <div class="col-md-12 ">
+                  <input type="email" class="form-control" name="email" placeholder="Email" required>
+                </div>
+
+                <div class="col-md-12">
+                  <input type="text" class="form-control" name="phone" placeholder="Phone" required>
+                </div>
+
+                <div class="col-md-12">
+                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your quote request has been sent successfully. Thank you!</div>
+
+                  <button type="submit">Send</button>
+                </div>
+
+              </div>
+            </form>
+          </div><!-- End Quote Form -->
+
+        </div>
+
+      </div>
+    </section><!-- End Get Started Section -->
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <%- include('partials/footer.ejs') %>
+  <!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+function getButtonValue(button) {
+  const categoryValue = button.value;
+  console.log("Clicked button value: " + categoryValue);
+
+  // Pass the category value to movetoprojects function
+  // movetoprojects(categoryValue);
+}
+
+async function sendmail(){
+  event.preventDefault();
+  const name = document.querySelector('input[name="name"]').value;
+  const email = document.querySelector('input[name="email"]').value;
+  const phone = document.querySelector('input[name="phone"]').value;
+  const message = document.querySelector('textarea[name="message"]').value;
+  const data = {
+    name,
+    email,
+    phone,
+    message
+  }
+  console.log(data);
+  const response = await axios.post('/sendmailindex', data);
+  console.log(response);
+  if(response.status === 200){
+   document.querySelector('.sent-message').style.display = 'block';
+
+  }
+  else{
+    document.querySelector('.error-message').style.display = 'block';
+    document.querySelector('.error-message').innerHTML = 'Something went wrong';
+  }
+}
+
+</script>
+</body>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+   
+  </body>
+</html>
