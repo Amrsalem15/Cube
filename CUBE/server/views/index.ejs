@@ -136,6 +136,7 @@
       <div class="section-header" style="margin-top: -60px;margin-bottom: -50px;">
         <h2>Our Project Categories</h2>
       </div>
+     
       <form action="/projects" method="POST">
       <% if (categories.length>0) { %>
        
@@ -154,19 +155,23 @@
                 </>
 
                 <% }) %>
+                
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
              
             
                 </div>
-            
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
+                
+        
         </div>
+        
      
           <% } %>
+         
 
         </form>
-         
+       
   </section><!-- End Our Projects Section -->
 
 
